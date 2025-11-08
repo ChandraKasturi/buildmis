@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ThemedCard } from "@/components/ThemedCard";
+import { ThemedMetricCard } from "@/components/ThemedMetricCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -137,160 +139,136 @@ export default function PortfolioReportPage() {
 
       {/* Summary KPI Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Total Project Value
-            </CardTitle>
-            <Briefcase className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {formatCurrency(totalProjectValue)}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Expected income from all projects
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Total Project Value"
+          value={formatCurrency(totalProjectValue)}
+          description="Expected income from all projects"
+          icon={Briefcase}
+          theme="portfolio"
+        />
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Total Billed
-            </CardTitle>
-            <Receipt className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-green-600">
-              {formatCurrency(totalBilled)}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              {billingPercentage.toFixed(1)}% of project value
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Total Billed"
+          value={formatCurrency(totalBilled)}
+          description={`${billingPercentage.toFixed(1)}% of project value`}
+          icon={Receipt}
+          theme="portfolio"
+          valueColor="text-green-600"
+        />
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Total Received
-            </CardTitle>
-            <Wallet className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-green-600">
-              {formatCurrency(totalReceived)}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              {collectionPercentage.toFixed(1)}% collection rate
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Total Received"
+          value={formatCurrency(totalReceived)}
+          description={`${collectionPercentage.toFixed(1)}% collection rate`}
+          icon={Wallet}
+          theme="portfolio"
+          valueColor="text-green-600"
+        />
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Expected Margin
-            </CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-blue-600">
-              {formatCurrency(expectedMargin)}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              {marginPercentage.toFixed(1)}% margin
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Expected Margin"
+          value={formatCurrency(expectedMargin)}
+          description={`${marginPercentage.toFixed(1)}% margin`}
+          icon={TrendingUp}
+          theme="portfolio"
+          valueColor="text-blue-600"
+        />
       </div>
 
       {/* Secondary Metrics */}
       <div className="grid gap-4 md:grid-cols-3">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Balance to be Billed
-            </CardTitle>
-            <AlertCircle className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-orange-600">
-              {formatCurrency(totalBalanceToBeBilled)}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Pending invoices
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Balance to be Billed"
+          value={formatCurrency(totalBalanceToBeBilled)}
+          description="Pending invoices"
+          icon={AlertCircle}
+          theme="portfolio"
+          valueColor="text-orange-600"
+        />
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Balance to be Received
-            </CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-orange-600">
-              {formatCurrency(totalBalanceToBeReceived)}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Outstanding receivables
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Balance to be Received"
+          value={formatCurrency(totalBalanceToBeReceived)}
+          description="Outstanding receivables"
+          icon={DollarSign}
+          theme="portfolio"
+          valueColor="text-orange-600"
+        />
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Total Expected Cost
-            </CardTitle>
-            <TrendingDown className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {formatCurrency(totalExpectedCost)}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Budgeted total cost
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Total Expected Cost"
+          value={formatCurrency(totalExpectedCost)}
+          description="Budgeted total cost"
+          icon={TrendingDown}
+          theme="portfolio"
+        />
       </div>
 
       {/* Charts */}
       <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+        <ThemedCard theme="portfolio">
           <CardHeader>
             <CardTitle>Project-wise Financial Overview</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis label={{ value: "Amount (Cr)", angle: -90, position: "insideLeft" }} />
-                <Tooltip formatter={(value) => `₹${Number(value).toFixed(1)}Cr`} />
+                <defs>
+                  <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.9}/>
+                    <stop offset="100%" stopColor="#1d4ed8" stopOpacity={0.7}/>
+                  </linearGradient>
+                  <linearGradient id="colorCost" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#ef4444" stopOpacity={0.9}/>
+                    <stop offset="100%" stopColor="#dc2626" stopOpacity={0.7}/>
+                  </linearGradient>
+                  <linearGradient id="colorBilled" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#10b981" stopOpacity={0.9}/>
+                    <stop offset="100%" stopColor="#059669" stopOpacity={0.7}/>
+                  </linearGradient>
+                  <linearGradient id="colorReceived" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#059669" stopOpacity={0.9}/>
+                    <stop offset="100%" stopColor="#047857" stopOpacity={0.7}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="name" stroke="#6b7280" />
+                <YAxis label={{ value: "Amount (Cr)", angle: -90, position: "insideLeft" }} stroke="#6b7280" />
+                <Tooltip 
+                  formatter={(value) => `₹${Number(value).toFixed(1)}Cr`}
+                  contentStyle={{ borderRadius: '8px', border: '2px solid #e5e7eb', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}
+                />
                 <Legend />
-                <Bar dataKey="Project Value" fill="#3b82f6" />
-                <Bar dataKey="Expected Cost" fill="#ef4444" />
-                <Bar dataKey="Billed" fill="#10b981" />
-                <Bar dataKey="Received" fill="#059669" />
+                <Bar dataKey="Project Value" fill="url(#colorValue)" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="Expected Cost" fill="url(#colorCost)" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="Billed" fill="url(#colorBilled)" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="Received" fill="url(#colorReceived)" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
         <div className="grid gap-4">
-          <Card>
+          <ThemedCard theme="portfolio">
             <CardHeader>
               <CardTitle>Billing Status</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={135}>
                 <PieChart>
+                  <defs>
+                    <radialGradient id="billedGradient">
+                      <stop offset="0%" stopColor="#10b981" stopOpacity={1}/>
+                      <stop offset="100%" stopColor="#059669" stopOpacity={0.8}/>
+                    </radialGradient>
+                    <radialGradient id="toBeBilledGradient">
+                      <stop offset="0%" stopColor="#f97316" stopOpacity={1}/>
+                      <stop offset="100%" stopColor="#ea580c" stopOpacity={0.8}/>
+                    </radialGradient>
+                    <filter id="shadow">
+                      <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.3"/>
+                    </filter>
+                  </defs>
                   <Pie
                     data={billingStatusData}
                     cx="50%"
@@ -302,24 +280,43 @@ export default function PortfolioReportPage() {
                     outerRadius={50}
                     fill="#8884d8"
                     dataKey="value"
+                    stroke="#fff"
+                    strokeWidth={2}
                   >
                     {billingStatusData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
+                      <Cell 
+                        key={`cell-${index}`} 
+                        fill={index === 0 ? "url(#billedGradient)" : "url(#toBeBilledGradient)"}
+                        filter="url(#shadow)"
+                      />
                     ))}
                   </Pie>
-                  <Tooltip formatter={(value) => formatCurrency(Number(value))} />
+                  <Tooltip 
+                    formatter={(value) => formatCurrency(Number(value))}
+                    contentStyle={{ borderRadius: '8px', border: '2px solid #e5e7eb', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </CardContent>
-          </Card>
+          </ThemedCard>
 
-          <Card>
+          <ThemedCard theme="portfolio">
             <CardHeader>
               <CardTitle>Collection Status</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={135}>
                 <PieChart>
+                  <defs>
+                    <radialGradient id="receivedGradient">
+                      <stop offset="0%" stopColor="#22c55e" stopOpacity={1}/>
+                      <stop offset="100%" stopColor="#16a34a" stopOpacity={0.8}/>
+                    </radialGradient>
+                    <radialGradient id="toBeReceivedGradient">
+                      <stop offset="0%" stopColor="#f59e0b" stopOpacity={1}/>
+                      <stop offset="100%" stopColor="#d97706" stopOpacity={0.8}/>
+                    </radialGradient>
+                  </defs>
                   <Pie
                     data={collectionStatusData}
                     cx="50%"
@@ -331,21 +328,30 @@ export default function PortfolioReportPage() {
                     outerRadius={50}
                     fill="#8884d8"
                     dataKey="value"
+                    stroke="#fff"
+                    strokeWidth={2}
                   >
                     {collectionStatusData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
+                      <Cell 
+                        key={`cell-${index}`} 
+                        fill={index === 0 ? "url(#receivedGradient)" : "url(#toBeReceivedGradient)"}
+                        filter="url(#shadow)"
+                      />
                     ))}
                   </Pie>
-                  <Tooltip formatter={(value) => formatCurrency(Number(value))} />
+                  <Tooltip 
+                    formatter={(value) => formatCurrency(Number(value))}
+                    contentStyle={{ borderRadius: '8px', border: '2px solid #e5e7eb', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </CardContent>
-          </Card>
+          </ThemedCard>
         </div>
       </div>
 
       {/* Project-wise Financial Table with Drill-down */}
-      <Card>
+      <ThemedCard theme="portfolio">
         <CardHeader>
           <CardTitle>Project-wise Financial Details</CardTitle>
           <p className="text-sm text-muted-foreground">
@@ -605,7 +611,7 @@ export default function PortfolioReportPage() {
             </Table>
           </div>
         </CardContent>
-      </Card>
+      </ThemedCard>
     </div>
   );
 }

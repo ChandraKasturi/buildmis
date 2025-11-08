@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ThemedCard } from "@/components/ThemedCard";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
@@ -142,7 +143,7 @@ export default function ProgressReportPage() {
 
       {/* Summary KPI Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <ThemedCard theme="progress">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Average Completion
@@ -155,9 +156,9 @@ export default function ProgressReportPage() {
               Across all projects
             </p>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
-        <Card>
+        <ThemedCard theme="progress">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">On Schedule</CardTitle>
             <CheckCircle2 className="h-4 w-4 text-blue-600" />
@@ -170,9 +171,9 @@ export default function ProgressReportPage() {
               Projects on track
             </p>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
-        <Card>
+        <ThemedCard theme="progress">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Behind Schedule
@@ -187,9 +188,9 @@ export default function ProgressReportPage() {
               Require attention
             </p>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
-        <Card>
+        <ThemedCard theme="progress">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Completed</CardTitle>
             <CheckCircle2 className="h-4 w-4 text-green-600" />
@@ -202,12 +203,12 @@ export default function ProgressReportPage() {
               Successfully done
             </p>
           </CardContent>
-        </Card>
+        </ThemedCard>
       </div>
 
       {/* Charts */}
       <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+        <ThemedCard theme="progress">
           <CardHeader>
             <CardTitle>Planned vs Actual Progress</CardTitle>
           </CardHeader>
@@ -224,9 +225,9 @@ export default function ProgressReportPage() {
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
-        <Card>
+        <ThemedCard theme="progress">
           <CardHeader>
             <CardTitle>Variance Analysis</CardTitle>
           </CardHeader>
@@ -248,11 +249,11 @@ export default function ProgressReportPage() {
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
-        </Card>
+        </ThemedCard>
       </div>
 
       {/* Project-wise Progress Table */}
-      <Card>
+      <ThemedCard theme="progress">
         <CardHeader>
           <CardTitle>Project-wise Progress Details</CardTitle>
         </CardHeader>
@@ -337,11 +338,11 @@ export default function ProgressReportPage() {
             </Table>
           </div>
         </CardContent>
-      </Card>
+      </ThemedCard>
 
       {/* Stage-wise Progress */}
       {progressData.progressData.map((project) => (
-        <Card key={project.projectCode}>
+        <ThemedCard key={project.projectCode} theme="progress">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
@@ -441,11 +442,11 @@ export default function ProgressReportPage() {
               </div>
             )}
           </CardContent>
-        </Card>
+        </ThemedCard>
       ))}
 
       {/* Key Insights */}
-      <Card>
+      <ThemedCard theme="progress">
         <CardHeader>
           <CardTitle>Key Insights</CardTitle>
         </CardHeader>
@@ -489,7 +490,7 @@ export default function ProgressReportPage() {
             )}
           </div>
         </CardContent>
-      </Card>
+      </ThemedCard>
     </div>
   );
 }

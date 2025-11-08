@@ -1,8 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ThemedCard } from "@/components/ThemedCard";
+import { ThemedMetricCard } from "@/components/ThemedMetricCard";
 import { Badge } from "@/components/ui/badge";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -15,10 +18,11 @@ import {
   DollarSign,
   TrendingUp,
   TrendingDown,
-  AlertTriangle,
-  CheckCircle2,
-  Activity,
   Target,
+  ChevronDown,
+  ChevronRight,
+  Activity,
+  AlertTriangle,
 } from "lucide-react";
 import {
   BarChart,
@@ -29,8 +33,6 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  LineChart,
-  Line,
   PieChart,
   Pie,
   Cell,
@@ -38,9 +40,12 @@ import {
 
 // Import mock data
 import budgetData from "@/data/mock/budget.json";
-import projectsData from "@/data/mock/projects.json";
 
 export default function BudgetReportPage() {
+  const [expandedProjects, setExpandedProjects] = useState<Set<string>>(
+    new Set()
+  );
+
   // Format currency
   const formatCurrency = (value: number) => {
     return `₹${(value / 10000000).toFixed(1)}Cr`;
@@ -52,334 +57,233 @@ export default function BudgetReportPage() {
 
   // Get summary data
   const summary = budgetData.summary;
+  const projects = budgetData.budgetData;
+
+  // Calculate additional metrics
+  const averageVariancePercent = summary.averageVariancePercent;
+  const totalCommittedCost = summary.totalCommittedCost;
+
+  // Toggle project expansion
+  const toggleProject = (projectCode: string) => {
+    const newExpanded = new Set(expandedProjects);
+    if (newExpanded.has(projectCode)) {
+      newExpanded.delete(projectCode);
+    } else {
+      newExpanded.add(projectCode);
+    }
+    setExpandedProjects(newExpanded);
+  };
 
   // Prepare chart data
-  const varianceChartData = budgetData.budgetData.map((project) => ({
+  const chartData = projects.map((project) => ({
     name: project.projectCode,
     "Expected Cost": project.expectedCost / 10000000,
     "Actual Cost": project.actualCostToDate / 10000000,
+    "Committed Cost": project.committedCost / 10000000,
     "Variance": project.budgetVariance / 10000000,
   }));
 
-  // Variance percentage chart
-  const variancePercentData = budgetData.budgetData.map((project) => ({
-    name: project.projectCode,
-    "Variance %": project.budgetVariancePercent,
-  }));
-
-  // Budget status pie chart
+  // Budget status pie chart data
   const budgetStatusData = [
-    {
-      name: "Under Budget",
-      value: summary.projectsUnderBudget,
-      color: "#10b981",
-    },
-    {
-      name: "Over Budget",
-      value: summary.projectsOverBudget,
-      color: "#ef4444",
-    },
+    { name: "Under Budget", value: summary.projectsUnderBudget, color: "#10b981" },
+    { name: "Over Budget", value: summary.projectsOverBudget, color: "#ef4444" },
   ];
 
-  // Cost breakdown data
+  // Cost breakdown pie chart data
   const costBreakdownData = [
-    {
-      name: "Actual Cost",
-      value: summary.totalActualCost,
-      color: "#3b82f6",
-    },
-    {
-      name: "Committed Cost",
-      value: summary.totalCommittedCost,
-      color: "#f59e0b",
-    },
-    {
-      name: "Remaining Budget",
-      value: summary.totalVariance > 0 ? summary.totalVariance : 0,
-      color: "#10b981",
-    },
+    { name: "Actual Cost", value: summary.totalActualCost, color: "#a855f7" },
+    { name: "Committed Cost", value: summary.totalCommittedCost, color: "#e879f9" },
+    { name: "Remaining Budget", value: summary.totalExpectedCost - summary.totalActualCost - summary.totalCommittedCost, color: "#d946ef" },
   ];
-
-  // Get status badge variant and color
-  const getStatusInfo = (status: string) => {
-    if (status === "Over Budget") {
-      return {
-        variant: "destructive" as const,
-        color: "text-red-600",
-        icon: AlertTriangle,
-      };
-    }
-    return {
-      variant: "default" as const,
-      color: "text-green-600",
-      icon: CheckCircle2,
-    };
-  };
 
   return (
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">
-          Budget vs Actual
-        </h1>
+        <h1 className="text-3xl font-bold tracking-tight">Budget vs Actual</h1>
         <p className="text-muted-foreground">
-          Cost control and variance analysis
+          Budget variance analysis and cost control overview
         </p>
       </div>
 
-      {/* Alert for Over Budget Projects */}
-      {summary.projectsOverBudget > 0 && (
-        <Alert variant="destructive">
-          <AlertTriangle className="h-4 w-4" />
-          <AlertTitle>Budget Overrun Alert</AlertTitle>
-          <AlertDescription>
-            {summary.projectsOverBudget} project(s) are currently over budget.
-            Immediate review and corrective action required.
-          </AlertDescription>
-        </Alert>
-      )}
-
       {/* Summary KPI Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Total Expected Cost
-            </CardTitle>
-            <Target className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {formatCurrency(summary.totalExpectedCost)}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Baseline budget
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Total Expected Cost"
+          value={formatCurrency(summary.totalExpectedCost)}
+          description="Baseline budget"
+          icon={Target}
+          theme="budget"
+        />
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Actual Cost to Date
-            </CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-blue-600">
-              {formatCurrency(summary.totalActualCost)}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              {((summary.totalActualCost / summary.totalExpectedCost) * 100).toFixed(1)}% of budget
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Actual Cost to Date"
+          value={formatCurrency(summary.totalActualCost)}
+          description={`${((summary.totalActualCost / summary.totalExpectedCost) * 100).toFixed(1)}% of budget`}
+          icon={DollarSign}
+          theme="budget"
+          valueColor="text-purple-600"
+        />
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Budget Variance
-            </CardTitle>
-            {summary.totalVariance >= 0 ? (
-              <TrendingUp className="h-4 w-4 text-green-600" />
-            ) : (
-              <TrendingDown className="h-4 w-4 text-red-600" />
-            )}
-          </CardHeader>
-          <CardContent>
-            <div
-              className={`text-2xl font-bold ${
-                summary.totalVariance >= 0 ? "text-green-600" : "text-red-600"
-              }`}
-            >
-              {formatCurrency(Math.abs(summary.totalVariance))}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              {summary.totalVariance >= 0 ? "Under budget" : "Over budget"}
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Budget Variance"
+          value={formatCurrency(Math.abs(summary.totalVariance))}
+          description={summary.totalVariance >= 0 ? "Under budget" : "Over budget"}
+          icon={summary.totalVariance >= 0 ? TrendingUp : TrendingDown}
+          theme="budget"
+          valueColor={summary.totalVariance >= 0 ? "text-green-600" : "text-red-600"}
+        />
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Avg Variance
-            </CardTitle>
-            <Activity className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {summary.averageVariancePercent.toFixed(1)}%
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Average across projects
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Avg Variance"
+          value={`${averageVariancePercent.toFixed(1)}%`}
+          description="Average across projects"
+          icon={Activity}
+          theme="budget"
+        />
       </div>
 
       {/* Secondary Metrics */}
       <div className="grid gap-4 md:grid-cols-3">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Committed Cost
-            </CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-orange-600">
-              {formatCurrency(summary.totalCommittedCost)}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Approved but unpaid
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Committed Cost"
+          value={formatCurrency(totalCommittedCost)}
+          description="Outstanding commitments"
+          icon={AlertTriangle}
+          theme="budget"
+          valueColor="text-orange-600"
+        />
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Projects Under Budget
-            </CardTitle>
-            <CheckCircle2 className="h-4 w-4 text-green-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-green-600">
-              {summary.projectsUnderBudget}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              On track projects
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Projects Over Budget"
+          value={summary.projectsOverBudget}
+          description="Requiring attention"
+          icon={AlertTriangle}
+          theme="budget"
+          valueColor="text-red-600"
+        />
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Projects Over Budget
-            </CardTitle>
-            <AlertTriangle className="h-4 w-4 text-red-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-red-600">
-              {summary.projectsOverBudget}
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Require attention
-            </p>
-          </CardContent>
-        </Card>
+        <ThemedMetricCard
+          title="Projects Under Budget"
+          value={summary.projectsUnderBudget}
+          description="On track"
+          icon={TrendingUp}
+          theme="budget"
+          valueColor="text-green-600"
+        />
       </div>
 
       {/* Charts */}
       <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+        <ThemedCard theme="budget">
           <CardHeader>
             <CardTitle>Budget vs Actual Cost</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={varianceChartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis label={{ value: "Amount (Cr)", angle: -90, position: "insideLeft" }} />
-                <Tooltip formatter={(value) => `₹${Number(value).toFixed(1)}Cr`} />
-                <Legend />
-                <Bar dataKey="Expected Cost" fill="#94a3b8" />
-                <Bar dataKey="Actual Cost" fill="#3b82f6" />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Variance Trend</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={varianceChartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis label={{ value: "Variance (Cr)", angle: -90, position: "insideLeft" }} />
-                <Tooltip formatter={(value) => `₹${Number(value).toFixed(1)}Cr`} />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="Variance"
-                  stroke="#10b981"
-                  strokeWidth={2}
-                  dot={{ r: 4 }}
+              <BarChart data={chartData}>
+                <defs>
+                  <linearGradient id="colorExpected" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#a855f7" stopOpacity={0.9}/>
+                    <stop offset="100%" stopColor="#9333ea" stopOpacity={0.7}/>
+                  </linearGradient>
+                  <linearGradient id="colorActual" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#e879f9" stopOpacity={0.9}/>
+                    <stop offset="100%" stopColor="#d946ef" stopOpacity={0.7}/>
+                  </linearGradient>
+                  <linearGradient id="colorCommitted" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#d946ef" stopOpacity={0.9}/>
+                    <stop offset="100%" stopColor="#c026d3" stopOpacity={0.7}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="name" stroke="#6b7280" />
+                <YAxis label={{ value: "Amount (Cr)", angle: -90, position: "insideLeft" }} stroke="#6b7280" />
+                <Tooltip 
+                  formatter={(value) => `₹${Number(value).toFixed(1)}Cr`}
+                  contentStyle={{ borderRadius: '8px', border: '2px solid #e5e7eb', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}
                 />
-              </LineChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Additional Charts */}
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Variance Percentage by Project</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={variancePercentData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis label={{ value: "Variance %", angle: -90, position: "insideLeft" }} />
-                <Tooltip formatter={(value) => `${Number(value).toFixed(1)}%`} />
-                <Bar dataKey="Variance %" fill="#10b981">
-                  {variancePercentData.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill={entry["Variance %"] < 0 ? "#ef4444" : "#10b981"}
-                    />
-                  ))}
-                </Bar>
+                <Legend />
+                <Bar dataKey="Expected Cost" fill="url(#colorExpected)" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="Actual Cost" fill="url(#colorActual)" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="Committed Cost" fill="url(#colorCommitted)" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
         <div className="grid gap-4">
-          <Card>
+          <ThemedCard theme="budget">
             <CardHeader>
               <CardTitle>Budget Status Distribution</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={135}>
                 <PieChart>
+                  <defs>
+                    <radialGradient id="underBudgetGradient">
+                      <stop offset="0%" stopColor="#a855f7" stopOpacity={1}/>
+                      <stop offset="100%" stopColor="#9333ea" stopOpacity={0.8}/>
+                    </radialGradient>
+                    <radialGradient id="overBudgetGradient">
+                      <stop offset="0%" stopColor="#e879f9" stopOpacity={1}/>
+                      <stop offset="100%" stopColor="#d946ef" stopOpacity={0.8}/>
+                    </radialGradient>
+                    <filter id="shadow">
+                      <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.3"/>
+                    </filter>
+                  </defs>
                   <Pie
                     data={budgetStatusData}
                     cx="50%"
                     cy="50%"
                     labelLine={false}
-                    label={({ name, value }) => `${name}: ${value}`}
+                    label={(entry: any) =>
+                      `${entry.name}: ${entry.value}`
+                    }
                     outerRadius={50}
                     fill="#8884d8"
                     dataKey="value"
+                    stroke="#fff"
+                    strokeWidth={2}
                   >
                     {budgetStatusData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
+                      <Cell 
+                        key={`cell-${index}`} 
+                        fill={index === 0 ? "url(#underBudgetGradient)" : "url(#overBudgetGradient)"}
+                        filter="url(#shadow)"
+                      />
                     ))}
                   </Pie>
-                  <Tooltip />
+                  <Tooltip 
+                    contentStyle={{ borderRadius: '8px', border: '2px solid #e5e7eb', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </CardContent>
-          </Card>
+          </ThemedCard>
 
-          <Card>
+          <ThemedCard theme="budget">
             <CardHeader>
               <CardTitle>Cost Breakdown</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={135}>
                 <PieChart>
+                  <defs>
+                    <radialGradient id="actualCostGradient">
+                      <stop offset="0%" stopColor="#a855f7" stopOpacity={1}/>
+                      <stop offset="100%" stopColor="#9333ea" stopOpacity={0.8}/>
+                    </radialGradient>
+                    <radialGradient id="committedCostGradient">
+                      <stop offset="0%" stopColor="#e879f9" stopOpacity={1}/>
+                      <stop offset="100%" stopColor="#d946ef" stopOpacity={0.8}/>
+                    </radialGradient>
+                    <radialGradient id="remainingBudgetGradient">
+                      <stop offset="0%" stopColor="#d946ef" stopOpacity={1}/>
+                      <stop offset="100%" stopColor="#c026d3" stopOpacity={0.8}/>
+                    </radialGradient>
+                  </defs>
                   <Pie
                     data={costBreakdownData}
                     cx="50%"
@@ -391,149 +295,266 @@ export default function BudgetReportPage() {
                     outerRadius={50}
                     fill="#8884d8"
                     dataKey="value"
+                    stroke="#fff"
+                    strokeWidth={2}
                   >
                     {costBreakdownData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
+                      <Cell 
+                        key={`cell-${index}`} 
+                        fill={index === 0 ? "url(#actualCostGradient)" : index === 1 ? "url(#committedCostGradient)" : "url(#remainingBudgetGradient)"}
+                        filter="url(#shadow)"
+                      />
                     ))}
                   </Pie>
-                  <Tooltip formatter={(value) => formatCurrency(Number(value))} />
+                  <Tooltip 
+                    formatter={(value) => formatCurrency(Number(value))}
+                    contentStyle={{ borderRadius: '8px', border: '2px solid #e5e7eb', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </CardContent>
-          </Card>
+          </ThemedCard>
         </div>
       </div>
 
-      {/* Project-wise Budget Table */}
-      <Card>
+      {/* Project-wise Budget Table with Drill-down */}
+      <ThemedCard theme="budget">
         <CardHeader>
           <CardTitle>Project-wise Budget Analysis</CardTitle>
+          <p className="text-sm text-muted-foreground">
+            Click on any row to view detailed breakdown
+          </p>
         </CardHeader>
         <CardContent>
           <div className="rounded-md border">
             <Table>
               <TableHeader>
                 <TableRow>
+                  <TableHead className="w-12"></TableHead>
                   <TableHead>Project</TableHead>
                   <TableHead className="text-right">Expected Cost</TableHead>
                   <TableHead className="text-right">Actual Cost</TableHead>
-                  <TableHead className="text-right">Committed</TableHead>
-                  <TableHead className="text-right">Variance (₹)</TableHead>
-                  <TableHead className="text-right">Variance (%)</TableHead>
-                  <TableHead className="text-right">Revenue vs Cost</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead className="text-right">Committed Cost</TableHead>
+                  <TableHead className="text-right">Variance</TableHead>
+                  <TableHead className="text-right">Variance %</TableHead>
+                  <TableHead className="text-center">Status</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {budgetData.budgetData.map((project) => {
-                  const statusInfo = getStatusInfo(project.status);
-                  const StatusIcon = statusInfo.icon;
-                  const projectInfo = projectsData.projects.find(
-                    (p) => p.projectCode === project.projectCode
-                  );
+                {projects.map((project) => {
+                  const isExpanded = expandedProjects.has(project.projectCode);
 
                   return (
-                    <TableRow
-                      key={project.projectCode}
-                      className={
-                        project.status === "Over Budget"
-                          ? "bg-red-50 dark:bg-red-950/20"
-                          : ""
-                      }
-                    >
-                      <TableCell>
-                        <div className="space-y-1">
-                          <p className="font-medium">{project.projectName}</p>
-                          <div className="flex items-center gap-2">
+                    <>
+                      {/* Main Row */}
+                      <TableRow
+                        key={project.projectCode}
+                        className="cursor-pointer hover:bg-muted/50"
+                        onClick={() => toggleProject(project.projectCode)}
+                      >
+                        <TableCell>
+                          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                            {isExpanded ? (
+                              <ChevronDown className="h-4 w-4" />
+                            ) : (
+                              <ChevronRight className="h-4 w-4" />
+                            )}
+                          </Button>
+                        </TableCell>
+                        <TableCell>
+                          <div className="space-y-1">
+                            <p className="font-medium">{project.projectName}</p>
                             <p className="text-xs text-muted-foreground">
                               {project.projectCode}
                             </p>
-                            {projectInfo && (
-                              <Badge variant="outline" className="text-xs">
-                                {projectInfo.completionPercentage}% Complete
-                              </Badge>
-                            )}
                           </div>
-                        </div>
-                      </TableCell>
-                      <TableCell className="text-right font-medium">
-                        {formatCurrency(project.expectedCost)}
-                      </TableCell>
-                      <TableCell className="text-right text-blue-600 font-medium">
-                        {formatCurrency(project.actualCostToDate)}
-                      </TableCell>
-                      <TableCell className="text-right text-orange-600">
-                        {formatCurrency(project.committedCost)}
-                      </TableCell>
-                      <TableCell
-                        className={`text-right font-medium ${
-                          project.budgetVariance >= 0
-                            ? "text-green-600"
-                            : "text-red-600"
-                        }`}
-                      >
-                        {formatCurrency(Math.abs(project.budgetVariance))}
-                      </TableCell>
-                      <TableCell
-                        className={`text-right font-medium ${
-                          project.budgetVariancePercent >= 0
-                            ? "text-green-600"
-                            : "text-red-600"
-                        }`}
-                      >
-                        {project.budgetVariancePercent >= 0 ? "+" : ""}
-                        {project.budgetVariancePercent.toFixed(1)}%
-                      </TableCell>
-                      <TableCell className="text-right">
-                        {project.revenueVsCostPercent.toFixed(1)}%
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex items-center gap-2">
-                          <StatusIcon className={`h-4 w-4 ${statusInfo.color}`} />
-                          <Badge variant={statusInfo.variant}>
+                        </TableCell>
+                        <TableCell className="text-right font-medium">
+                          {formatCurrency(project.expectedCost)}
+                        </TableCell>
+                        <TableCell className="text-right text-purple-600 font-medium">
+                          {formatCurrency(project.actualCostToDate)}
+                        </TableCell>
+                        <TableCell className="text-right text-orange-600">
+                          {formatCurrency(project.committedCost)}
+                        </TableCell>
+                        <TableCell className={`text-right font-medium ${
+                          project.budgetVariance >= 0 ? "text-green-600" : "text-red-600"
+                        }`}>
+                          {formatCurrency(Math.abs(project.budgetVariance))}
+                        </TableCell>
+                        <TableCell className={`text-right font-medium ${
+                          project.budgetVariancePercent >= 0 ? "text-green-600" : "text-red-600"
+                        }`}>
+                          {project.budgetVariancePercent.toFixed(1)}%
+                        </TableCell>
+                        <TableCell className="text-center">
+                          <Badge 
+                            variant={project.status === "Under Budget" ? "default" : "destructive"}
+                            className="text-xs"
+                          >
                             {project.status}
                           </Badge>
-                        </div>
-                      </TableCell>
-                    </TableRow>
+                        </TableCell>
+                      </TableRow>
+
+                      {/* Expanded Details Row */}
+                      {isExpanded && (
+                        <TableRow>
+                          <TableCell colSpan={8} className="bg-muted/30">
+                            <div className="p-4 space-y-4">
+                              <div className="grid gap-4 md:grid-cols-2">
+                                {/* Left Column - Budget Analysis */}
+                                <div className="space-y-3">
+                                  <h4 className="font-semibold text-sm">
+                                    Budget Analysis
+                                  </h4>
+                                  <div className="space-y-2 text-sm">
+                                    <div className="flex justify-between">
+                                      <span className="text-muted-foreground">
+                                        Budget Utilization:
+                                      </span>
+                                      <span className="font-medium">
+                                        {((project.actualCostToDate / project.expectedCost) * 100).toFixed(1)}%
+                                      </span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                      <span className="text-muted-foreground">
+                                        Revenue vs Cost:
+                                      </span>
+                                      <span className="font-medium">
+                                        {project.revenueVsCostPercent.toFixed(1)}%
+                                      </span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                      <span className="text-muted-foreground">
+                                        Remaining Budget:
+                                      </span>
+                                      <span className="font-medium">
+                                        {formatCurrency(project.expectedCost - project.actualCostToDate - project.committedCost)}
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                {/* Right Column - Cost Breakdown */}
+                                <div className="space-y-3">
+                                  <h4 className="font-semibold text-sm">
+                                    Cost Breakdown
+                                  </h4>
+                                  <div className="space-y-2 text-sm">
+                                    <div className="flex justify-between">
+                                      <span className="text-muted-foreground">
+                                        Actual Spend:
+                                      </span>
+                                      <span className="font-medium text-purple-600">
+                                        {formatCurrencyDetailed(project.actualCostToDate)}
+                                      </span>
+                                    </div>
+                                    <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
+                                      <div
+                                        className="h-full bg-purple-600 transition-all"
+                                        style={{ width: `${(project.actualCostToDate / project.expectedCost) * 100}%` }}
+                                      />
+                                    </div>
+                                    <div className="flex justify-between mt-3">
+                                      <span className="text-muted-foreground">
+                                        Committed:
+                                      </span>
+                                      <span className="font-medium text-orange-600">
+                                        {formatCurrencyDetailed(project.committedCost)}
+                                      </span>
+                                    </div>
+                                    <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
+                                      <div
+                                        className="h-full bg-orange-600 transition-all"
+                                        style={{
+                                          width: `${(project.committedCost / project.expectedCost) * 100}%`,
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Detailed Budget Metrics */}
+                              <div className="border-t pt-3">
+                                <h4 className="font-semibold text-sm mb-3">
+                                  Detailed Budget Metrics
+                                </h4>
+                                <div className="grid gap-3 md:grid-cols-4 text-sm">
+                                  <div className="space-y-1">
+                                    <p className="text-muted-foreground text-xs">
+                                      Expected Cost
+                                    </p>
+                                    <p className="font-semibold">
+                                      {formatCurrencyDetailed(project.expectedCost)}
+                                    </p>
+                                  </div>
+                                  <div className="space-y-1">
+                                    <p className="text-muted-foreground text-xs">
+                                      Actual Cost
+                                    </p>
+                                    <p className="font-semibold text-purple-600">
+                                      {formatCurrencyDetailed(project.actualCostToDate)}
+                                    </p>
+                                  </div>
+                                  <div className="space-y-1">
+                                    <p className="text-muted-foreground text-xs">
+                                      Budget Variance
+                                    </p>
+                                    <p className={`font-semibold ${
+                                      project.budgetVariance >= 0 ? "text-green-600" : "text-red-600"
+                                    }`}>
+                                      {formatCurrencyDetailed(project.budgetVariance)}
+                                    </p>
+                                  </div>
+                                  <div className="space-y-1">
+                                    <p className="text-muted-foreground text-xs">
+                                      Variance %
+                                    </p>
+                                    <p className={`font-semibold ${
+                                      project.budgetVariancePercent >= 0 ? "text-green-600" : "text-red-600"
+                                    }`}>
+                                      {project.budgetVariancePercent.toFixed(1)}%
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      )}
+                    </>
                   );
                 })}
 
                 {/* Total Row */}
                 <TableRow className="bg-muted/50 font-semibold">
+                  <TableCell></TableCell>
                   <TableCell>TOTAL</TableCell>
                   <TableCell className="text-right">
                     {formatCurrency(summary.totalExpectedCost)}
                   </TableCell>
-                  <TableCell className="text-right text-blue-600">
+                  <TableCell className="text-right text-purple-600">
                     {formatCurrency(summary.totalActualCost)}
                   </TableCell>
                   <TableCell className="text-right text-orange-600">
                     {formatCurrency(summary.totalCommittedCost)}
                   </TableCell>
-                  <TableCell
-                    className={`text-right ${
-                      summary.totalVariance >= 0
-                        ? "text-green-600"
-                        : "text-red-600"
-                    }`}
-                  >
+                  <TableCell className={`text-right ${
+                    summary.totalVariance >= 0 ? "text-green-600" : "text-red-600"
+                  }`}>
                     {formatCurrency(Math.abs(summary.totalVariance))}
                   </TableCell>
-                  <TableCell
-                    className={`text-right ${
-                      summary.averageVariancePercent >= 0
-                        ? "text-green-600"
-                        : "text-red-600"
-                    }`}
-                  >
-                    {summary.averageVariancePercent >= 0 ? "+" : ""}
+                  <TableCell className={`text-right ${
+                    summary.averageVariancePercent >= 0 ? "text-green-600" : "text-red-600"
+                  }`}>
                     {summary.averageVariancePercent.toFixed(1)}%
                   </TableCell>
-                  <TableCell className="text-right">-</TableCell>
-                  <TableCell>
-                    <Badge variant="outline">
-                      {summary.projectsUnderBudget} Under / {summary.projectsOverBudget} Over
+                  <TableCell className="text-center">
+                    <Badge variant="outline" className="text-xs">
+                      {summary.projectsUnderBudget}U / {summary.projectsOverBudget}O
                     </Badge>
                   </TableCell>
                 </TableRow>
@@ -541,67 +562,7 @@ export default function BudgetReportPage() {
             </Table>
           </div>
         </CardContent>
-      </Card>
-
-      {/* Insights */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Key Insights</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-3">
-            {summary.totalVariance >= 0 ? (
-              <div className="flex items-start gap-3 p-3 rounded-lg bg-green-50 dark:bg-green-950/20">
-                <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5" />
-                <div>
-                  <p className="text-sm font-medium">Portfolio Under Budget</p>
-                  <p className="text-sm text-muted-foreground">
-                    Overall portfolio is {formatCurrency(summary.totalVariance)} under
-                    budget ({summary.averageVariancePercent.toFixed(1)}% variance).
-                    Good cost control across projects.
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <div className="flex items-start gap-3 p-3 rounded-lg bg-red-50 dark:bg-red-950/20">
-                <AlertTriangle className="h-5 w-5 text-red-600 mt-0.5" />
-                <div>
-                  <p className="text-sm font-medium">Portfolio Over Budget</p>
-                  <p className="text-sm text-muted-foreground">
-                    Overall portfolio is {formatCurrency(Math.abs(summary.totalVariance))}{" "}
-                    over budget. Immediate cost control measures needed.
-                  </p>
-                </div>
-              </div>
-            )}
-
-            <div className="flex items-start gap-3 p-3 rounded-lg bg-blue-50 dark:bg-blue-950/20">
-              <Activity className="h-5 w-5 text-blue-600 mt-0.5" />
-              <div>
-                <p className="text-sm font-medium">Cost Utilization</p>
-                <p className="text-sm text-muted-foreground">
-                  {((summary.totalActualCost / summary.totalExpectedCost) * 100).toFixed(1)}%
-                  of budget utilized. {formatCurrency(summary.totalCommittedCost)} committed
-                  for upcoming payments.
-                </p>
-              </div>
-            </div>
-
-            {summary.projectsOverBudget > 0 && (
-              <div className="flex items-start gap-3 p-3 rounded-lg bg-orange-50 dark:bg-orange-950/20">
-                <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5" />
-                <div>
-                  <p className="text-sm font-medium">Action Required</p>
-                  <p className="text-sm text-muted-foreground">
-                    {summary.projectsOverBudget} project(s) are over budget. Review cost
-                    drivers and implement corrective measures.
-                  </p>
-                </div>
-              </div>
-            )}
-          </div>
-        </CardContent>
-      </Card>
+      </ThemedCard>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ThemedCard } from "@/components/ThemedCard";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
@@ -118,7 +119,7 @@ export default function SafetyReportPage() {
 
       {/* Summary KPI Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <ThemedCard theme="safety">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Total Incidents
@@ -131,9 +132,9 @@ export default function SafetyReportPage() {
               Across all projects
             </p>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
-        <Card>
+        <ThemedCard theme="safety">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Open Incidents</CardTitle>
             <XCircle className="h-4 w-4 text-red-600" />
@@ -146,9 +147,9 @@ export default function SafetyReportPage() {
               Require closure
             </p>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
-        <Card>
+        <ThemedCard theme="safety">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Avg Safety Score
@@ -163,9 +164,9 @@ export default function SafetyReportPage() {
               Overall safety rating
             </p>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
-        <Card>
+        <ThemedCard theme="safety">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Avg Compliance
@@ -180,12 +181,12 @@ export default function SafetyReportPage() {
               Compliance rate
             </p>
           </CardContent>
-        </Card>
+        </ThemedCard>
       </div>
 
       {/* Secondary Metrics */}
       <div className="grid gap-4 md:grid-cols-4">
-        <Card>
+        <ThemedCard theme="safety">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Minor</CardTitle>
             <div className="h-3 w-3 rounded-full bg-yellow-500" />
@@ -198,9 +199,9 @@ export default function SafetyReportPage() {
               Minor incidents
             </p>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
-        <Card>
+        <ThemedCard theme="safety">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Major</CardTitle>
             <div className="h-3 w-3 rounded-full bg-orange-500" />
@@ -213,9 +214,9 @@ export default function SafetyReportPage() {
               Major incidents
             </p>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
-        <Card>
+        <ThemedCard theme="safety">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Fatal</CardTitle>
             <div className="h-3 w-3 rounded-full bg-red-600" />
@@ -228,9 +229,9 @@ export default function SafetyReportPage() {
               Fatal incidents
             </p>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
-        <Card>
+        <ThemedCard theme="safety">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Near Miss</CardTitle>
             <div className="h-3 w-3 rounded-full bg-blue-500" />
@@ -243,12 +244,12 @@ export default function SafetyReportPage() {
               Near miss events
             </p>
           </CardContent>
-        </Card>
+        </ThemedCard>
       </div>
 
       {/* Charts */}
       <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+        <ThemedCard theme="safety">
           <CardHeader>
             <CardTitle>Incidents by Severity</CardTitle>
           </CardHeader>
@@ -267,9 +268,9 @@ export default function SafetyReportPage() {
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
-        <Card>
+        <ThemedCard theme="safety">
           <CardHeader>
             <CardTitle>Safety Score & Compliance</CardTitle>
           </CardHeader>
@@ -286,12 +287,12 @@ export default function SafetyReportPage() {
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
-        </Card>
+        </ThemedCard>
       </div>
 
       {/* Additional Charts */}
       <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+        <ThemedCard theme="safety">
           <CardHeader>
             <CardTitle>Incident Status Distribution</CardTitle>
           </CardHeader>
@@ -318,9 +319,9 @@ export default function SafetyReportPage() {
               </PieChart>
             </ResponsiveContainer>
           </CardContent>
-        </Card>
+        </ThemedCard>
 
-        <Card>
+        <ThemedCard theme="safety">
           <CardHeader>
             <CardTitle>Severity Distribution</CardTitle>
           </CardHeader>
@@ -345,11 +346,11 @@ export default function SafetyReportPage() {
               </PieChart>
             </ResponsiveContainer>
           </CardContent>
-        </Card>
+        </ThemedCard>
       </div>
 
       {/* Project-wise Safety Table */}
-      <Card>
+      <ThemedCard theme="safety">
         <CardHeader>
           <CardTitle>Project-wise Safety Details</CardTitle>
         </CardHeader>
@@ -439,11 +440,11 @@ export default function SafetyReportPage() {
             </Table>
           </div>
         </CardContent>
-      </Card>
+      </ThemedCard>
 
       {/* Compliance Categories */}
       {safetyData.safetyData.map((project) => (
-        <Card key={project.projectCode}>
+        <ThemedCard key={project.projectCode} theme="safety">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
@@ -535,11 +536,11 @@ export default function SafetyReportPage() {
               </div>
             </div>
           </CardContent>
-        </Card>
+        </ThemedCard>
       ))}
 
       {/* Key Insights */}
-      <Card>
+      <ThemedCard theme="safety">
         <CardHeader>
           <CardTitle>Key Insights</CardTitle>
         </CardHeader>
@@ -597,7 +598,7 @@ export default function SafetyReportPage() {
             )}
           </div>
         </CardContent>
-      </Card>
+      </ThemedCard>
     </div>
   );
 }

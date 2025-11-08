@@ -1,0 +1,1180 @@
+{
+  "summary": {
+    "totalCashInHand": 2850000,
+    "totalBankBalance": 45600000,
+    "totalLiquidFunds": 48450000,
+    "accountsSummary": [
+      {
+        "accountName": "Cash in Hand",
+        "accountType": "Cash",
+        "currentBalance": 2850000
+      },
+      {
+        "accountName": "HDFC Bank - Current A/C",
+        "accountType": "Bank",
+        "accountNumber": "50200012345678",
+        "currentBalance": 18500000
+      },
+      {
+        "accountName": "ICICI Bank - Current A/C",
+        "accountType": "Bank",
+        "accountNumber": "000405012345",
+        "currentBalance": 15200000
+      },
+      {
+        "accountName": "State Bank of India - Current A/C",
+        "accountType": "Bank",
+        "accountNumber": "30123456789",
+        "currentBalance": 11900000
+      }
+    ]
+  },
+  "projects": [
+    {
+      "projectCode": "PRJ001",
+      "projectName": "Skyline Towers",
+      "accounts": [
+        {
+          "accountName": "Cash in Hand",
+          "accountType": "Cash",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 450000,
+              "receipts": 180000,
+              "payments": 95000,
+              "closingBalance": 535000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 520000,
+              "receipts": 220000,
+              "payments": 135000,
+              "closingBalance": 605000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 600000,
+              "receipts": 150000,
+              "payments": 185000,
+              "closingBalance": 565000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 570000,
+              "receipts": 280000,
+              "payments": 210000,
+              "closingBalance": 640000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 635000,
+              "receipts": 195000,
+              "payments": 165000,
+              "closingBalance": 665000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 660000,
+              "receipts": 240000,
+              "payments": 225000,
+              "closingBalance": 675000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 670000,
+              "receipts": 310000,
+              "payments": 280000,
+              "closingBalance": 700000
+            }
+          ]
+        },
+        {
+          "accountName": "HDFC Bank - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "50200012345678",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 3500000,
+              "receipts": 850000,
+              "payments": 620000,
+              "closingBalance": 3730000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 3700000,
+              "receipts": 920000,
+              "payments": 780000,
+              "closingBalance": 3840000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 3850000,
+              "receipts": 1100000,
+              "payments": 950000,
+              "closingBalance": 4000000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 4000000,
+              "receipts": 750000,
+              "payments": 680000,
+              "closingBalance": 4070000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 4050000,
+              "receipts": 980000,
+              "payments": 820000,
+              "closingBalance": 4210000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 4200000,
+              "receipts": 1150000,
+              "payments": 1050000,
+              "closingBalance": 4300000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 4300000,
+              "receipts": 890000,
+              "payments": 720000,
+              "closingBalance": 4470000
+            }
+          ]
+        },
+        {
+          "accountName": "ICICI Bank - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "000405012345",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 2800000,
+              "receipts": 650000,
+              "payments": 480000,
+              "closingBalance": 2970000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 2950000,
+              "receipts": 720000,
+              "payments": 590000,
+              "closingBalance": 3080000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 3100000,
+              "receipts": 580000,
+              "payments": 670000,
+              "closingBalance": 3010000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 3000000,
+              "receipts": 890000,
+              "payments": 750000,
+              "closingBalance": 3140000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 3150000,
+              "receipts": 620000,
+              "payments": 540000,
+              "closingBalance": 3230000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 3220000,
+              "receipts": 780000,
+              "payments": 680000,
+              "closingBalance": 3320000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 3300000,
+              "receipts": 950000,
+              "payments": 820000,
+              "closingBalance": 3430000
+            }
+          ]
+        },
+        {
+          "accountName": "State Bank of India - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "30123456789",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 2200000,
+              "receipts": 480000,
+              "payments": 350000,
+              "closingBalance": 2330000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 2300000,
+              "receipts": 620000,
+              "payments": 490000,
+              "closingBalance": 2430000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 2450000,
+              "receipts": 550000,
+              "payments": 580000,
+              "closingBalance": 2420000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 2400000,
+              "receipts": 720000,
+              "payments": 640000,
+              "closingBalance": 2480000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 2500000,
+              "receipts": 580000,
+              "payments": 490000,
+              "closingBalance": 2590000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 2580000,
+              "receipts": 680000,
+              "payments": 590000,
+              "closingBalance": 2670000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 2650000,
+              "receipts": 750000,
+              "payments": 620000,
+              "closingBalance": 2780000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectCode": "PRJ002",
+      "projectName": "Green Valley Residency",
+      "accounts": [
+        {
+          "accountName": "Cash in Hand",
+          "accountType": "Cash",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 380000,
+              "receipts": 150000,
+              "payments": 85000,
+              "closingBalance": 445000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 440000,
+              "receipts": 180000,
+              "payments": 120000,
+              "closingBalance": 500000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 495000,
+              "receipts": 210000,
+              "payments": 155000,
+              "closingBalance": 550000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 545000,
+              "receipts": 165000,
+              "payments": 140000,
+              "closingBalance": 570000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 575000,
+              "receipts": 190000,
+              "payments": 175000,
+              "closingBalance": 590000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 585000,
+              "receipts": 220000,
+              "payments": 195000,
+              "closingBalance": 610000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 605000,
+              "receipts": 240000,
+              "payments": 210000,
+              "closingBalance": 635000
+            }
+          ]
+        },
+        {
+          "accountName": "HDFC Bank - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "50200012345678",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 2900000,
+              "receipts": 720000,
+              "payments": 580000,
+              "closingBalance": 3040000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 3050000,
+              "receipts": 850000,
+              "payments": 690000,
+              "closingBalance": 3210000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 3200000,
+              "receipts": 680000,
+              "payments": 750000,
+              "closingBalance": 3130000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 3140000,
+              "receipts": 920000,
+              "payments": 810000,
+              "closingBalance": 3250000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 3240000,
+              "receipts": 780000,
+              "payments": 670000,
+              "closingBalance": 3350000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 3360000,
+              "receipts": 890000,
+              "payments": 780000,
+              "closingBalance": 3470000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 3460000,
+              "receipts": 950000,
+              "payments": 820000,
+              "closingBalance": 3590000
+            }
+          ]
+        },
+        {
+          "accountName": "ICICI Bank - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "000405012345",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 2400000,
+              "receipts": 580000,
+              "payments": 420000,
+              "closingBalance": 2560000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 2550000,
+              "receipts": 650000,
+              "payments": 520000,
+              "closingBalance": 2680000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 2690000,
+              "receipts": 720000,
+              "payments": 610000,
+              "closingBalance": 2800000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 2790000,
+              "receipts": 580000,
+              "payments": 650000,
+              "closingBalance": 2720000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 2730000,
+              "receipts": 820000,
+              "payments": 710000,
+              "closingBalance": 2840000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 2830000,
+              "receipts": 690000,
+              "payments": 590000,
+              "closingBalance": 2930000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 2940000,
+              "receipts": 780000,
+              "payments": 670000,
+              "closingBalance": 3050000
+            }
+          ]
+        },
+        {
+          "accountName": "State Bank of India - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "30123456789",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 1900000,
+              "receipts": 420000,
+              "payments": 310000,
+              "closingBalance": 2010000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 2000000,
+              "receipts": 550000,
+              "payments": 430000,
+              "closingBalance": 2120000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 2130000,
+              "receipts": 480000,
+              "payments": 520000,
+              "closingBalance": 2090000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 2080000,
+              "receipts": 620000,
+              "payments": 560000,
+              "closingBalance": 2140000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 2150000,
+              "receipts": 520000,
+              "payments": 450000,
+              "closingBalance": 2220000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 2210000,
+              "receipts": 590000,
+              "payments": 510000,
+              "closingBalance": 2290000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 2300000,
+              "receipts": 680000,
+              "payments": 580000,
+              "closingBalance": 2400000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectCode": "PRJ003",
+      "projectName": "Lakeside Villas",
+      "accounts": [
+        {
+          "accountName": "Cash in Hand",
+          "accountType": "Cash",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 320000,
+              "receipts": 120000,
+              "payments": 75000,
+              "closingBalance": 365000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 360000,
+              "receipts": 150000,
+              "payments": 95000,
+              "closingBalance": 415000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 410000,
+              "receipts": 180000,
+              "payments": 125000,
+              "closingBalance": 465000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 470000,
+              "receipts": 140000,
+              "payments": 110000,
+              "closingBalance": 500000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 495000,
+              "receipts": 160000,
+              "payments": 135000,
+              "closingBalance": 520000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 525000,
+              "receipts": 190000,
+              "payments": 155000,
+              "closingBalance": 560000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 555000,
+              "receipts": 210000,
+              "payments": 175000,
+              "closingBalance": 590000
+            }
+          ]
+        },
+        {
+          "accountName": "HDFC Bank - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "50200012345678",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 2600000,
+              "receipts": 650000,
+              "payments": 520000,
+              "closingBalance": 2730000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 2720000,
+              "receipts": 780000,
+              "payments": 620000,
+              "closingBalance": 2880000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 2890000,
+              "receipts": 720000,
+              "payments": 680000,
+              "closingBalance": 2930000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 2920000,
+              "receipts": 850000,
+              "payments": 750000,
+              "closingBalance": 3020000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 3030000,
+              "receipts": 690000,
+              "payments": 610000,
+              "closingBalance": 3110000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 3100000,
+              "receipts": 820000,
+              "payments": 720000,
+              "closingBalance": 3200000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 3210000,
+              "receipts": 880000,
+              "payments": 750000,
+              "closingBalance": 3340000
+            }
+          ]
+        },
+        {
+          "accountName": "ICICI Bank - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "000405012345",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 2100000,
+              "receipts": 520000,
+              "payments": 380000,
+              "closingBalance": 2240000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 2230000,
+              "receipts": 590000,
+              "payments": 470000,
+              "closingBalance": 2350000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 2360000,
+              "receipts": 650000,
+              "payments": 550000,
+              "closingBalance": 2460000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 2450000,
+              "receipts": 520000,
+              "payments": 590000,
+              "closingBalance": 2380000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 2390000,
+              "receipts": 720000,
+              "payments": 630000,
+              "closingBalance": 2480000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 2470000,
+              "receipts": 620000,
+              "payments": 540000,
+              "closingBalance": 2550000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 2560000,
+              "receipts": 710000,
+              "payments": 610000,
+              "closingBalance": 2660000
+            }
+          ]
+        },
+        {
+          "accountName": "State Bank of India - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "30123456789",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 1700000,
+              "receipts": 380000,
+              "payments": 280000,
+              "closingBalance": 1800000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 1790000,
+              "receipts": 490000,
+              "payments": 380000,
+              "closingBalance": 1900000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 1910000,
+              "receipts": 420000,
+              "payments": 470000,
+              "closingBalance": 1860000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 1850000,
+              "receipts": 550000,
+              "payments": 490000,
+              "closingBalance": 1910000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 1920000,
+              "receipts": 460000,
+              "payments": 390000,
+              "closingBalance": 1990000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 1980000,
+              "receipts": 520000,
+              "payments": 450000,
+              "closingBalance": 2050000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 2060000,
+              "receipts": 600000,
+              "payments": 510000,
+              "closingBalance": 2150000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectCode": "PRJ004",
+      "projectName": "Metro Plaza",
+      "accounts": [
+        {
+          "accountName": "Cash in Hand",
+          "accountType": "Cash",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 280000,
+              "receipts": 110000,
+              "payments": 65000,
+              "closingBalance": 325000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 320000,
+              "receipts": 130000,
+              "payments": 85000,
+              "closingBalance": 365000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 370000,
+              "receipts": 160000,
+              "payments": 115000,
+              "closingBalance": 415000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 410000,
+              "receipts": 120000,
+              "payments": 95000,
+              "closingBalance": 435000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 440000,
+              "receipts": 140000,
+              "payments": 120000,
+              "closingBalance": 460000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 455000,
+              "receipts": 170000,
+              "payments": 135000,
+              "closingBalance": 490000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 495000,
+              "receipts": 190000,
+              "payments": 155000,
+              "closingBalance": 530000
+            }
+          ]
+        },
+        {
+          "accountName": "HDFC Bank - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "50200012345678",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 2300000,
+              "receipts": 580000,
+              "payments": 460000,
+              "closingBalance": 2420000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 2410000,
+              "receipts": 690000,
+              "payments": 550000,
+              "closingBalance": 2550000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 2560000,
+              "receipts": 620000,
+              "payments": 590000,
+              "closingBalance": 2590000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 2580000,
+              "receipts": 750000,
+              "payments": 670000,
+              "closingBalance": 2660000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 2670000,
+              "receipts": 610000,
+              "payments": 540000,
+              "closingBalance": 2740000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 2730000,
+              "receipts": 720000,
+              "payments": 630000,
+              "closingBalance": 2820000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 2830000,
+              "receipts": 780000,
+              "payments": 660000,
+              "closingBalance": 2950000
+            }
+          ]
+        },
+        {
+          "accountName": "ICICI Bank - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "000405012345",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 1900000,
+              "receipts": 460000,
+              "payments": 340000,
+              "closingBalance": 2020000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 2010000,
+              "receipts": 520000,
+              "payments": 420000,
+              "closingBalance": 2110000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 2120000,
+              "receipts": 580000,
+              "payments": 490000,
+              "closingBalance": 2210000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 2200000,
+              "receipts": 460000,
+              "payments": 520000,
+              "closingBalance": 2140000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 2150000,
+              "receipts": 640000,
+              "payments": 560000,
+              "closingBalance": 2230000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 2220000,
+              "receipts": 550000,
+              "payments": 480000,
+              "closingBalance": 2290000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 2300000,
+              "receipts": 630000,
+              "payments": 540000,
+              "closingBalance": 2390000
+            }
+          ]
+        },
+        {
+          "accountName": "State Bank of India - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "30123456789",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 1500000,
+              "receipts": 340000,
+              "payments": 250000,
+              "closingBalance": 1590000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 1580000,
+              "receipts": 430000,
+              "payments": 330000,
+              "closingBalance": 1680000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 1690000,
+              "receipts": 370000,
+              "payments": 410000,
+              "closingBalance": 1650000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 1640000,
+              "receipts": 480000,
+              "payments": 420000,
+              "closingBalance": 1700000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 1710000,
+              "receipts": 400000,
+              "payments": 340000,
+              "closingBalance": 1770000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 1760000,
+              "receipts": 460000,
+              "payments": 390000,
+              "closingBalance": 1830000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 1840000,
+              "receipts": 530000,
+              "payments": 440000,
+              "closingBalance": 1930000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectCode": "PRJ005",
+      "projectName": "Sunrise Apartments",
+      "accounts": [
+        {
+          "accountName": "Cash in Hand",
+          "accountType": "Cash",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 250000,
+              "receipts": 95000,
+              "payments": 55000,
+              "closingBalance": 290000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 285000,
+              "receipts": 115000,
+              "payments": 75000,
+              "closingBalance": 325000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 330000,
+              "receipts": 140000,
+              "payments": 95000,
+              "closingBalance": 375000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 370000,
+              "receipts": 105000,
+              "payments": 85000,
+              "closingBalance": 390000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 395000,
+              "receipts": 125000,
+              "payments": 105000,
+              "closingBalance": 415000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 410000,
+              "receipts": 150000,
+              "payments": 120000,
+              "closingBalance": 440000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 445000,
+              "receipts": 170000,
+              "payments": 135000,
+              "closingBalance": 480000
+            }
+          ]
+        },
+        {
+          "accountName": "HDFC Bank - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "50200012345678",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 2100000,
+              "receipts": 520000,
+              "payments": 410000,
+              "closingBalance": 2210000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 2200000,
+              "receipts": 620000,
+              "payments": 490000,
+              "closingBalance": 2330000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 2340000,
+              "receipts": 560000,
+              "payments": 530000,
+              "closingBalance": 2370000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 2360000,
+              "receipts": 680000,
+              "payments": 600000,
+              "closingBalance": 2440000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 2450000,
+              "receipts": 550000,
+              "payments": 480000,
+              "closingBalance": 2520000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 2510000,
+              "receipts": 650000,
+              "payments": 560000,
+              "closingBalance": 2600000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 2610000,
+              "receipts": 710000,
+              "payments": 590000,
+              "closingBalance": 2730000
+            }
+          ]
+        },
+        {
+          "accountName": "ICICI Bank - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "000405012345",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 1700000,
+              "receipts": 410000,
+              "payments": 300000,
+              "closingBalance": 1810000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 1800000,
+              "receipts": 470000,
+              "payments": 370000,
+              "closingBalance": 1900000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 1910000,
+              "receipts": 520000,
+              "payments": 440000,
+              "closingBalance": 1990000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 1980000,
+              "receipts": 410000,
+              "payments": 470000,
+              "closingBalance": 1920000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 1930000,
+              "receipts": 580000,
+              "payments": 500000,
+              "closingBalance": 2010000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 2000000,
+              "receipts": 490000,
+              "payments": 420000,
+              "closingBalance": 2070000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 2080000,
+              "receipts": 570000,
+              "payments": 480000,
+              "closingBalance": 2170000
+            }
+          ]
+        },
+        {
+          "accountName": "State Bank of India - Current A/C",
+          "accountType": "Bank",
+          "accountNumber": "30123456789",
+          "transactions": [
+            {
+              "date": "2025-11-02",
+              "openingBalance": 1400000,
+              "receipts": 310000,
+              "payments": 230000,
+              "closingBalance": 1480000
+            },
+            {
+              "date": "2025-11-03",
+              "openingBalance": 1470000,
+              "receipts": 390000,
+              "payments": 300000,
+              "closingBalance": 1560000
+            },
+            {
+              "date": "2025-11-04",
+              "openingBalance": 1570000,
+              "receipts": 340000,
+              "payments": 370000,
+              "closingBalance": 1540000
+            },
+            {
+              "date": "2025-11-05",
+              "openingBalance": 1530000,
+              "receipts": 440000,
+              "payments": 380000,
+              "closingBalance": 1590000
+            },
+            {
+              "date": "2025-11-06",
+              "openingBalance": 1600000,
+              "receipts": 370000,
+              "payments": 310000,
+              "closingBalance": 1660000
+            },
+            {
+              "date": "2025-11-07",
+              "openingBalance": 1650000,
+              "receipts": 420000,
+              "payments": 350000,
+              "closingBalance": 1720000
+            },
+            {
+              "date": "2025-11-08",
+              "openingBalance": 1730000,
+              "receipts": 490000,
+              "payments": 400000,
+              "closingBalance": 1820000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+

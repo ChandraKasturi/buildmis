@@ -104,7 +104,6 @@ export default function DashboardPage() {
           value={formatCurrency(totalBudgetVariance)}
           description={`${projectsOverBudget} project(s) over budget`}
           icon={AlertTriangle}
-          className={projectsOverBudget > 0 ? "border-orange-200" : ""}
         />
         <MetricCard
           title="Safety Score"
@@ -131,7 +130,7 @@ export default function DashboardPage() {
 
       {/* Project Status Overview */}
       <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+        <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-2 bg-gradient-to-br from-white to-gray-50/50 before:absolute before:inset-0 before:rounded-lg before:p-[2px] before:-z-10 before:bg-gradient-to-br before:from-blue-200 before:via-purple-200 before:to-pink-200 before:opacity-50 hover:before:opacity-100 before:transition-opacity">
           <CardHeader>
             <CardTitle>Project Status Overview</CardTitle>
           </CardHeader>
@@ -172,7 +171,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-2 bg-gradient-to-br from-white to-gray-50/50 before:absolute before:inset-0 before:rounded-lg before:p-[2px] before:-z-10 before:bg-gradient-to-br before:from-blue-200 before:via-purple-200 before:to-pink-200 before:opacity-50 hover:before:opacity-100 before:transition-opacity">
           <CardHeader>
             <CardTitle>Financial Summary</CardTitle>
           </CardHeader>
@@ -239,7 +238,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Alerts Section */}
-      <Card>
+      <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-2 bg-gradient-to-br from-white to-gray-50/50 before:absolute before:inset-0 before:rounded-lg before:p-[2px] before:-z-10 before:bg-gradient-to-br before:from-blue-200 before:via-purple-200 before:to-pink-200 before:opacity-50 hover:before:opacity-100 before:transition-opacity">
         <CardHeader>
           <CardTitle>Key Alerts & Actions</CardTitle>
         </CardHeader>
