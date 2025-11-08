@@ -1,65 +1,301 @@
-import Image from "next/image";
+import { MetricCard } from "@/components/MetricCard";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  DollarSign,
+  TrendingUp,
+  Activity,
+  AlertTriangle,
+  CheckCircle2,
+  Briefcase,
+  Building2,
+  Shield,
+} from "lucide-react";
 
-export default function Home() {
+// Import mock data
+import projectsData from "@/data/mock/projects.json";
+import budgetData from "@/data/mock/budget.json";
+import receivablesData from "@/data/mock/receivables.json";
+import progressData from "@/data/mock/progress.json";
+import safetyData from "@/data/mock/safety.json";
+
+export default function DashboardPage() {
+  // Calculate aggregate KPIs
+  const totalProjects = projectsData.projects.length;
+  const activeProjects = projectsData.projects.filter(
+    (p) => p.currentStage === "Execution"
+  ).length;
+  const completedProjects = projectsData.projects.filter(
+    (p) => p.currentStage === "Completed"
+  ).length;
+
+  // Financial metrics
+  const totalProjectValue = projectsData.projects.reduce(
+    (sum, p) => sum + p.financial.projectValue,
+    0
+  );
+  const totalBilled = receivablesData.summary.totalBilled;
+  const totalReceived = receivablesData.summary.totalReceived;
+  const collectionPercent = receivablesData.summary.overallCollectionPercent;
+
+  // Budget metrics
+  const totalBudgetVariance = budgetData.summary.totalVariance;
+  const projectsOverBudget = budgetData.summary.projectsOverBudget;
+
+  // Progress metrics
+  const avgCompletion = progressData.summary.averageCompletion;
+  const projectsBehindSchedule = progressData.summary.projectsBehindSchedule;
+
+  // Safety metrics
+  const totalIncidents = safetyData.summary.totalIncidents;
+  const openIncidents = safetyData.summary.totalOpen;
+  const avgSafetyScore = safetyData.summary.averageSafetyScore;
+  const avgCompliance = safetyData.summary.averageCompliancePercent;
+
+  // Format currency
+  const formatCurrency = (value: number) => {
+    return `₹${(value / 10000000).toFixed(1)}Cr`;
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="space-y-6">
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+        <p className="text-muted-foreground">
+          Overview of all projects and key metrics
+        </p>
+      </div>
+
+      {/* KPI Cards Grid */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <MetricCard
+          title="Total Projects"
+          value={totalProjects}
+          description={`${activeProjects} active, ${completedProjects} completed`}
+          icon={Briefcase}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+        <MetricCard
+          title="Project Value"
+          value={formatCurrency(totalProjectValue)}
+          description="Total portfolio value"
+          icon={DollarSign}
+        />
+        <MetricCard
+          title="Collection Rate"
+          value={`${collectionPercent.toFixed(1)}%`}
+          description={`${formatCurrency(totalReceived)} received`}
+          icon={TrendingUp}
+          trend={{ value: 5.2, isPositive: true }}
+        />
+        <MetricCard
+          title="Avg Completion"
+          value={`${avgCompletion}%`}
+          description={`${projectsBehindSchedule} projects behind schedule`}
+          icon={Activity}
+          trend={{ value: 2.1, isPositive: false }}
+        />
+      </div>
+
+      {/* Secondary Metrics */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <MetricCard
+          title="Budget Variance"
+          value={formatCurrency(totalBudgetVariance)}
+          description={`${projectsOverBudget} project(s) over budget`}
+          icon={AlertTriangle}
+          className={projectsOverBudget > 0 ? "border-orange-200" : ""}
+        />
+        <MetricCard
+          title="Safety Score"
+          value={`${avgSafetyScore.toFixed(1)}/100`}
+          description={`${openIncidents} open incidents`}
+          icon={Shield}
+          trend={{ value: 3.5, isPositive: true }}
+        />
+        <MetricCard
+          title="Compliance"
+          value={`${avgCompliance.toFixed(1)}%`}
+          description="Average compliance rate"
+          icon={CheckCircle2}
+        />
+        <MetricCard
+          title="Total Incidents"
+          value={totalIncidents}
+          description={`${openIncidents} open, ${
+            totalIncidents - openIncidents
+          } closed`}
+          icon={AlertTriangle}
+        />
+      </div>
+
+      {/* Project Status Overview */}
+      <div className="grid gap-4 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Project Status Overview</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {projectsData.projects.map((project) => (
+                <div
+                  key={project.projectCode}
+                  className="flex items-center justify-between"
+                >
+                  <div className="space-y-1">
+                    <p className="text-sm font-medium leading-none">
+                      {project.projectName}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {project.projectCode} • {project.location.city}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Badge
+                      variant={
+                        project.currentStage === "Completed"
+                          ? "default"
+                          : project.currentStage === "Execution"
+                          ? "secondary"
+                          : "outline"
+                      }
+                    >
+                      {project.currentStage}
+                    </Badge>
+                    <span className="text-sm font-medium">
+                      {project.completionPercentage}%
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Financial Summary</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">
+                  Total Project Value
+                </span>
+                <span className="text-sm font-medium">
+                  {formatCurrency(totalProjectValue)}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">
+                  Total Billed
+                </span>
+                <span className="text-sm font-medium">
+                  {formatCurrency(totalBilled)}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">
+                  Total Received
+                </span>
+                <span className="text-sm font-medium text-green-600">
+                  {formatCurrency(totalReceived)}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">
+                  Balance Receivable
+                </span>
+                <span className="text-sm font-medium text-orange-600">
+                  {formatCurrency(
+                    receivablesData.summary.totalBalanceReceivable
+                  )}
+                </span>
+              </div>
+              <div className="h-px bg-border my-2" />
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">
+                  Budget Variance
+                </span>
+                <span
+                  className={`text-sm font-medium ${
+                    totalBudgetVariance >= 0 ? "text-green-600" : "text-red-600"
+                  }`}
+                >
+                  {formatCurrency(totalBudgetVariance)}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">
+                  Expected Cost
+                </span>
+                <span className="text-sm font-medium">
+                  {formatCurrency(budgetData.summary.totalExpectedCost)}
+                </span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Alerts Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Key Alerts & Actions</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-3">
+            {projectsOverBudget > 0 && (
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-orange-50 dark:bg-orange-950/20">
+                <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5" />
+                <div>
+                  <p className="text-sm font-medium">Budget Overrun Alert</p>
+                  <p className="text-sm text-muted-foreground">
+                    {projectsOverBudget} project(s) are over budget. Review
+                    required.
+                  </p>
+                </div>
+              </div>
+            )}
+            {projectsBehindSchedule > 0 && (
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-yellow-50 dark:bg-yellow-950/20">
+                <Activity className="h-5 w-5 text-yellow-600 mt-0.5" />
+                <div>
+                  <p className="text-sm font-medium">Schedule Delay</p>
+                  <p className="text-sm text-muted-foreground">
+                    {projectsBehindSchedule} project(s) are behind schedule.
+                    Action needed.
+                  </p>
+                </div>
+              </div>
+            )}
+            {openIncidents > 0 && (
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-red-50 dark:bg-red-950/20">
+                <Shield className="h-5 w-5 text-red-600 mt-0.5" />
+                <div>
+                  <p className="text-sm font-medium">Open Safety Incidents</p>
+                  <p className="text-sm text-muted-foreground">
+                    {openIncidents} safety incident(s) require closure.
+                  </p>
+                </div>
+              </div>
+            )}
+            {receivablesData.summary.totalOverdue > 0 && (
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-blue-50 dark:bg-blue-950/20">
+                <DollarSign className="h-5 w-5 text-blue-600 mt-0.5" />
+                <div>
+                  <p className="text-sm font-medium">Overdue Receivables</p>
+                  <p className="text-sm text-muted-foreground">
+                    {formatCurrency(receivablesData.summary.totalOverdue)}{" "}
+                    overdue. Follow-up required.
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
+

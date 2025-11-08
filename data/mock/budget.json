@@ -1,0 +1,69 @@
+{
+  "budgetData": [
+    {
+      "projectCode": "PRJ-001",
+      "projectName": "Skyline Residency",
+      "expectedCost": 120000000,
+      "actualCostToDate": 78000000,
+      "committedCost": 15000000,
+      "budgetVariance": 42000000,
+      "budgetVariancePercent": 35.0,
+      "revenueVsCostPercent": 52.0,
+      "status": "Under Budget"
+    },
+    {
+      "projectCode": "PRJ-002",
+      "projectName": "Green Valley Apartments",
+      "expectedCost": 160000000,
+      "actualCostToDate": 72000000,
+      "committedCost": 20000000,
+      "budgetVariance": 88000000,
+      "budgetVariancePercent": 55.0,
+      "revenueVsCostPercent": 36.0,
+      "status": "Under Budget"
+    },
+    {
+      "projectCode": "PRJ-003",
+      "projectName": "Tech Park Phase 1",
+      "expectedCost": 280000000,
+      "actualCostToDate": 42000000,
+      "committedCost": 8000000,
+      "budgetVariance": 238000000,
+      "budgetVariancePercent": 85.0,
+      "revenueVsCostPercent": 12.0,
+      "status": "Under Budget"
+    },
+    {
+      "projectCode": "PRJ-004",
+      "projectName": "Lakeside Villas",
+      "expectedCost": 145000000,
+      "actualCostToDate": 152000000,
+      "committedCost": 5000000,
+      "budgetVariance": -7000000,
+      "budgetVariancePercent": -4.8,
+      "revenueVsCostPercent": 84.4,
+      "status": "Over Budget"
+    },
+    {
+      "projectCode": "PRJ-005",
+      "projectName": "Metro Mall Complex",
+      "expectedCost": 200000000,
+      "actualCostToDate": 198000000,
+      "committedCost": 0,
+      "budgetVariance": 2000000,
+      "budgetVariancePercent": 1.0,
+      "revenueVsCostPercent": 79.2,
+      "status": "Under Budget"
+    }
+  ],
+  "summary": {
+    "totalExpectedCost": 905000000,
+    "totalActualCost": 542000000,
+    "totalCommittedCost": 48000000,
+    "totalVariance": 363000000,
+    "averageVariancePercent": 40.1,
+    "projectsOverBudget": 1,
+    "projectsUnderBudget": 4
+  }
+}
+

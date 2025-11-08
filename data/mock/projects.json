@@ -1,0 +1,125 @@
+{
+  "projects": [
+    {
+      "projectCode": "PRJ-001",
+      "projectName": "Skyline Residency",
+      "projectType": "Residential",
+      "location": {
+        "address": "Plot 45, Sector 12",
+        "city": "Bangalore",
+        "state": "Karnataka"
+      },
+      "currentStage": "Execution",
+      "completionPercentage": 65,
+      "plannedStartDate": "2023-01-15",
+      "plannedCompletionDate": "2025-06-30",
+      "projectManager": "Rajesh Kumar",
+      "siteEngineers": ["Amit Sharma", "Priya Reddy"],
+      "financial": {
+        "projectValue": 150000000,
+        "expectedCost": 120000000,
+        "billedAmount": 90000000,
+        "receivedAmount": 75000000,
+        "balanceToBeBilled": 60000000,
+        "balanceToBeReceived": 75000000
+      }
+    },
+    {
+      "projectCode": "PRJ-002",
+      "projectName": "Green Valley Apartments",
+      "projectType": "Residential",
+      "location": {
+        "address": "Survey No. 234",
+        "city": "Hyderabad",
+        "state": "Telangana"
+      },
+      "currentStage": "Execution",
+      "completionPercentage": 45,
+      "plannedStartDate": "2023-06-01",
+      "plannedCompletionDate": "2025-12-31",
+      "projectManager": "Suresh Patel",
+      "siteEngineers": ["Vikram Singh", "Neha Gupta"],
+      "financial": {
+        "projectValue": 200000000,
+        "expectedCost": 160000000,
+        "billedAmount": 80000000,
+        "receivedAmount": 65000000,
+        "balanceToBeBilled": 120000000,
+        "balanceToBeReceived": 135000000
+      }
+    },
+    {
+      "projectCode": "PRJ-003",
+      "projectName": "Tech Park Phase 1",
+      "projectType": "Commercial",
+      "location": {
+        "address": "IT Corridor, Outer Ring Road",
+        "city": "Pune",
+        "state": "Maharashtra"
+      },
+      "currentStage": "Planning",
+      "completionPercentage": 15,
+      "plannedStartDate": "2024-01-10",
+      "plannedCompletionDate": "2026-06-30",
+      "projectManager": "Anil Mehta",
+      "siteEngineers": ["Ravi Kumar"],
+      "financial": {
+        "projectValue": 350000000,
+        "expectedCost": 280000000,
+        "billedAmount": 35000000,
+        "receivedAmount": 30000000,
+        "balanceToBeBilled": 315000000,
+        "balanceToBeReceived": 320000000
+      }
+    },
+    {
+      "projectCode": "PRJ-004",
+      "projectName": "Lakeside Villas",
+      "projectType": "Residential",
+      "location": {
+        "address": "Lake View Road",
+        "city": "Chennai",
+        "state": "Tamil Nadu"
+      },
+      "currentStage": "Execution",
+      "completionPercentage": 80,
+      "plannedStartDate": "2022-08-01",
+      "plannedCompletionDate": "2024-12-31",
+      "projectManager": "Deepak Iyer",
+      "siteEngineers": ["Sanjay Nair", "Kavita Menon"],
+      "financial": {
+        "projectValue": 180000000,
+        "expectedCost": 145000000,
+        "billedAmount": 140000000,
+        "receivedAmount": 130000000,
+        "balanceToBeBilled": 40000000,
+        "balanceToBeReceived": 50000000
+      }
+    },
+    {
+      "projectCode": "PRJ-005",
+      "projectName": "Metro Mall Complex",
+      "projectType": "Commercial",
+      "location": {
+        "address": "MG Road Junction",
+        "city": "Kochi",
+        "state": "Kerala"
+      },
+      "currentStage": "Completed",
+      "completionPercentage": 100,
+      "plannedStartDate": "2021-03-01",
+      "plannedCompletionDate": "2023-12-31",
+      "projectManager": "Thomas George",
+      "siteEngineers": ["Arun Pillai", "Meera Das"],
+      "financial": {
+        "projectValue": 250000000,
+        "expectedCost": 200000000,
+        "billedAmount": 250000000,
+        "receivedAmount": 245000000,
+        "balanceToBeBilled": 0,
+        "balanceToBeReceived": 5000000
+      }
+    }
+  ]
+}
+

@@ -1,0 +1,223 @@
+{
+  "progressData": [
+    {
+      "projectCode": "PRJ-001",
+      "projectName": "Skyline Residency",
+      "overallCompletion": 65,
+      "plannedCompletion": 70,
+      "variance": -5,
+      "status": "Behind Schedule",
+      "stages": [
+        {
+          "stageName": "Foundation",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "Completed"
+        },
+        {
+          "stageName": "Structure",
+          "plannedProgress": 100,
+          "actualProgress": 95,
+          "status": "Near Completion"
+        },
+        {
+          "stageName": "MEP Works",
+          "plannedProgress": 60,
+          "actualProgress": 50,
+          "status": "In Progress"
+        },
+        {
+          "stageName": "Finishing",
+          "plannedProgress": 30,
+          "actualProgress": 20,
+          "status": "In Progress"
+        }
+      ],
+      "milestones": [
+        {
+          "milestoneName": "Foundation Complete",
+          "plannedDate": "2023-06-30",
+          "actualDate": "2023-07-05",
+          "delayDays": 5
+        },
+        {
+          "milestoneName": "Structure Complete",
+          "plannedDate": "2024-03-31",
+          "actualDate": null,
+          "delayDays": 0
+        }
+      ]
+    },
+    {
+      "projectCode": "PRJ-002",
+      "projectName": "Green Valley Apartments",
+      "overallCompletion": 45,
+      "plannedCompletion": 50,
+      "variance": -5,
+      "status": "Behind Schedule",
+      "stages": [
+        {
+          "stageName": "Foundation",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "Completed"
+        },
+        {
+          "stageName": "Structure",
+          "plannedProgress": 70,
+          "actualProgress": 60,
+          "status": "In Progress"
+        },
+        {
+          "stageName": "MEP Works",
+          "plannedProgress": 30,
+          "actualProgress": 20,
+          "status": "In Progress"
+        },
+        {
+          "stageName": "Finishing",
+          "plannedProgress": 10,
+          "actualProgress": 5,
+          "status": "Started"
+        }
+      ],
+      "milestones": [
+        {
+          "milestoneName": "Foundation Complete",
+          "plannedDate": "2023-10-31",
+          "actualDate": "2023-11-10",
+          "delayDays": 10
+        }
+      ]
+    },
+    {
+      "projectCode": "PRJ-003",
+      "projectName": "Tech Park Phase 1",
+      "overallCompletion": 15,
+      "plannedCompletion": 15,
+      "variance": 0,
+      "status": "On Schedule",
+      "stages": [
+        {
+          "stageName": "Site Preparation",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "Completed"
+        },
+        {
+          "stageName": "Foundation",
+          "plannedProgress": 40,
+          "actualProgress": 40,
+          "status": "In Progress"
+        },
+        {
+          "stageName": "Structure",
+          "plannedProgress": 0,
+          "actualProgress": 0,
+          "status": "Not Started"
+        }
+      ],
+      "milestones": [
+        {
+          "milestoneName": "Site Clearance",
+          "plannedDate": "2024-02-28",
+          "actualDate": "2024-02-28",
+          "delayDays": 0
+        }
+      ]
+    },
+    {
+      "projectCode": "PRJ-004",
+      "projectName": "Lakeside Villas",
+      "overallCompletion": 80,
+      "plannedCompletion": 75,
+      "variance": 5,
+      "status": "Ahead of Schedule",
+      "stages": [
+        {
+          "stageName": "Foundation",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "Completed"
+        },
+        {
+          "stageName": "Structure",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "Completed"
+        },
+        {
+          "stageName": "MEP Works",
+          "plannedProgress": 90,
+          "actualProgress": 95,
+          "status": "Near Completion"
+        },
+        {
+          "stageName": "Finishing",
+          "plannedProgress": 60,
+          "actualProgress": 70,
+          "status": "In Progress"
+        }
+      ],
+      "milestones": [
+        {
+          "milestoneName": "Structure Complete",
+          "plannedDate": "2023-12-31",
+          "actualDate": "2023-12-20",
+          "delayDays": -11
+        }
+      ]
+    },
+    {
+      "projectCode": "PRJ-005",
+      "projectName": "Metro Mall Complex",
+      "overallCompletion": 100,
+      "plannedCompletion": 100,
+      "variance": 0,
+      "status": "Completed",
+      "stages": [
+        {
+          "stageName": "Foundation",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "Completed"
+        },
+        {
+          "stageName": "Structure",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "Completed"
+        },
+        {
+          "stageName": "MEP Works",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "Completed"
+        },
+        {
+          "stageName": "Finishing",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "Completed"
+        }
+      ],
+      "milestones": [
+        {
+          "milestoneName": "Project Handover",
+          "plannedDate": "2023-12-31",
+          "actualDate": "2023-12-31",
+          "delayDays": 0
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalProjects": 5,
+    "averageCompletion": 61,
+    "projectsOnSchedule": 1,
+    "projectsBehindSchedule": 2,
+    "projectsAheadOfSchedule": 1,
+    "projectsCompleted": 1
+  }
+}
+

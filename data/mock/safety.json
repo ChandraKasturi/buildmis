@@ -1,0 +1,213 @@
+{
+  "safetyData": [
+    {
+      "projectCode": "PRJ-001",
+      "projectName": "Skyline Residency",
+      "incidents": {
+        "total": 8,
+        "minor": 5,
+        "major": 2,
+        "fatal": 0,
+        "nearMiss": 1,
+        "open": 2,
+        "closed": 6
+      },
+      "compliance": {
+        "totalChecks": 15,
+        "complied": 12,
+        "partial": 2,
+        "pending": 1,
+        "compliancePercent": 80.0
+      },
+      "safetyScore": 75,
+      "lastIncidentDate": "2024-09-15",
+      "categories": [
+        {
+          "category": "Fire Safety",
+          "status": "Complied",
+          "lastInspection": "2024-10-01"
+        },
+        {
+          "category": "PPE",
+          "status": "Partial",
+          "lastInspection": "2024-10-15"
+        },
+        {
+          "category": "Scaffolding",
+          "status": "Complied",
+          "lastInspection": "2024-09-28"
+        }
+      ]
+    },
+    {
+      "projectCode": "PRJ-002",
+      "projectName": "Green Valley Apartments",
+      "incidents": {
+        "total": 12,
+        "minor": 8,
+        "major": 3,
+        "fatal": 0,
+        "nearMiss": 1,
+        "open": 3,
+        "closed": 9
+      },
+      "compliance": {
+        "totalChecks": 15,
+        "complied": 10,
+        "partial": 3,
+        "pending": 2,
+        "compliancePercent": 66.7
+      },
+      "safetyScore": 65,
+      "lastIncidentDate": "2024-10-20",
+      "categories": [
+        {
+          "category": "Fire Safety",
+          "status": "Partial",
+          "lastInspection": "2024-09-15"
+        },
+        {
+          "category": "PPE",
+          "status": "Complied",
+          "lastInspection": "2024-10-10"
+        },
+        {
+          "category": "Electrical",
+          "status": "Pending",
+          "lastInspection": "2024-08-30"
+        }
+      ]
+    },
+    {
+      "projectCode": "PRJ-003",
+      "projectName": "Tech Park Phase 1",
+      "incidents": {
+        "total": 3,
+        "minor": 2,
+        "major": 1,
+        "fatal": 0,
+        "nearMiss": 0,
+        "open": 1,
+        "closed": 2
+      },
+      "compliance": {
+        "totalChecks": 12,
+        "complied": 11,
+        "partial": 1,
+        "pending": 0,
+        "compliancePercent": 91.7
+      },
+      "safetyScore": 90,
+      "lastIncidentDate": "2024-08-10",
+      "categories": [
+        {
+          "category": "Fire Safety",
+          "status": "Complied",
+          "lastInspection": "2024-10-25"
+        },
+        {
+          "category": "PPE",
+          "status": "Complied",
+          "lastInspection": "2024-10-20"
+        },
+        {
+          "category": "First Aid",
+          "status": "Complied",
+          "lastInspection": "2024-10-18"
+        }
+      ]
+    },
+    {
+      "projectCode": "PRJ-004",
+      "projectName": "Lakeside Villas",
+      "incidents": {
+        "total": 6,
+        "minor": 4,
+        "major": 1,
+        "fatal": 0,
+        "nearMiss": 1,
+        "open": 1,
+        "closed": 5
+      },
+      "compliance": {
+        "totalChecks": 15,
+        "complied": 13,
+        "partial": 1,
+        "pending": 1,
+        "compliancePercent": 86.7
+      },
+      "safetyScore": 82,
+      "lastIncidentDate": "2024-07-22",
+      "categories": [
+        {
+          "category": "Fire Safety",
+          "status": "Complied",
+          "lastInspection": "2024-10-12"
+        },
+        {
+          "category": "Scaffolding",
+          "status": "Complied",
+          "lastInspection": "2024-10-08"
+        },
+        {
+          "category": "Waste Management",
+          "status": "Partial",
+          "lastInspection": "2024-09-30"
+        }
+      ]
+    },
+    {
+      "projectCode": "PRJ-005",
+      "projectName": "Metro Mall Complex",
+      "incidents": {
+        "total": 4,
+        "minor": 3,
+        "major": 1,
+        "fatal": 0,
+        "nearMiss": 0,
+        "open": 0,
+        "closed": 4
+      },
+      "compliance": {
+        "totalChecks": 15,
+        "complied": 15,
+        "partial": 0,
+        "pending": 0,
+        "compliancePercent": 100.0
+      },
+      "safetyScore": 95,
+      "lastIncidentDate": "2023-11-05",
+      "categories": [
+        {
+          "category": "Fire Safety",
+          "status": "Complied",
+          "lastInspection": "2024-10-30"
+        },
+        {
+          "category": "PPE",
+          "status": "Complied",
+          "lastInspection": "2024-10-28"
+        },
+        {
+          "category": "Electrical",
+          "status": "Complied",
+          "lastInspection": "2024-10-25"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalIncidents": 33,
+    "totalMinor": 22,
+    "totalMajor": 8,
+    "totalFatal": 0,
+    "totalNearMiss": 3,
+    "totalOpen": 7,
+    "totalClosed": 26,
+    "averageCompliancePercent": 85.0,
+    "averageSafetyScore": 81.4,
+    "projectsFullCompliance": 1,
+    "projectsWithOpenIncidents": 4
+  }
+}
+

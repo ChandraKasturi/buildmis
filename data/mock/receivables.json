@@ -1,0 +1,94 @@
+{
+  "receivablesData": [
+    {
+      "projectCode": "PRJ-001",
+      "projectName": "Skyline Residency",
+      "projectValue": 150000000,
+      "totalBilled": 90000000,
+      "totalReceived": 75000000,
+      "balanceReceivable": 15000000,
+      "collectionPercent": 83.3,
+      "collectionByStage": {
+        "booking": 15000000,
+        "agreement": 45000000,
+        "saleDeed": 15000000
+      },
+      "overdueAmount": 5000000,
+      "agingDays": 45
+    },
+    {
+      "projectCode": "PRJ-002",
+      "projectName": "Green Valley Apartments",
+      "projectValue": 200000000,
+      "totalBilled": 80000000,
+      "totalReceived": 65000000,
+      "balanceReceivable": 15000000,
+      "collectionPercent": 81.25,
+      "collectionByStage": {
+        "booking": 20000000,
+        "agreement": 35000000,
+        "saleDeed": 10000000
+      },
+      "overdueAmount": 8000000,
+      "agingDays": 60
+    },
+    {
+      "projectCode": "PRJ-003",
+      "projectName": "Tech Park Phase 1",
+      "projectValue": 350000000,
+      "totalBilled": 35000000,
+      "totalReceived": 30000000,
+      "balanceReceivable": 5000000,
+      "collectionPercent": 85.7,
+      "collectionByStage": {
+        "booking": 30000000,
+        "agreement": 0,
+        "saleDeed": 0
+      },
+      "overdueAmount": 2000000,
+      "agingDays": 30
+    },
+    {
+      "projectCode": "PRJ-004",
+      "projectName": "Lakeside Villas",
+      "projectValue": 180000000,
+      "totalBilled": 140000000,
+      "totalReceived": 130000000,
+      "balanceReceivable": 10000000,
+      "collectionPercent": 92.9,
+      "collectionByStage": {
+        "booking": 18000000,
+        "agreement": 72000000,
+        "saleDeed": 40000000
+      },
+      "overdueAmount": 3000000,
+      "agingDays": 35
+    },
+    {
+      "projectCode": "PRJ-005",
+      "projectName": "Metro Mall Complex",
+      "projectValue": 250000000,
+      "totalBilled": 250000000,
+      "totalReceived": 245000000,
+      "balanceReceivable": 5000000,
+      "collectionPercent": 98.0,
+      "collectionByStage": {
+        "booking": 25000000,
+        "agreement": 125000000,
+        "saleDeed": 95000000
+      },
+      "overdueAmount": 1000000,
+      "agingDays": 15
+    }
+  ],
+  "summary": {
+    "totalProjectValue": 1130000000,
+    "totalBilled": 595000000,
+    "totalReceived": 545000000,
+    "totalBalanceReceivable": 50000000,
+    "overallCollectionPercent": 91.6,
+    "totalOverdue": 19000000,
+    "averageAgingDays": 37
+  }
+}
+
