@@ -19,36 +19,43 @@ interface ThemedMetricCardProps {
 const themeStyles = {
   portfolio: {
     border: "from-blue-400 via-blue-300 to-cyan-300",
+    borderColor: "border-blue-200/50",
     iconBg: "bg-gradient-to-br from-blue-50 to-cyan-50",
     iconColor: "text-blue-600",
   },
   budget: {
     border: "from-purple-500 via-purple-400 to-fuchsia-400",
+    borderColor: "border-purple-200/50",
     iconBg: "bg-gradient-to-br from-purple-50 to-fuchsia-50",
     iconColor: "text-purple-600",
   },
   receivables: {
     border: "from-green-400 via-green-300 to-emerald-300",
+    borderColor: "border-green-200/50",
     iconBg: "bg-gradient-to-br from-green-50 to-emerald-50",
     iconColor: "text-green-600",
   },
   progress: {
     border: "from-orange-400 via-orange-300 to-amber-300",
+    borderColor: "border-orange-200/50",
     iconBg: "bg-gradient-to-br from-orange-50 to-amber-50",
     iconColor: "text-orange-600",
   },
   safety: {
     border: "from-red-400 via-red-300 to-rose-300",
+    borderColor: "border-red-200/50",
     iconBg: "bg-gradient-to-br from-red-50 to-rose-50",
     iconColor: "text-red-600",
   },
   cash: {
     border: "from-emerald-400 via-teal-300 to-cyan-300",
+    borderColor: "border-emerald-200/50",
     iconBg: "bg-gradient-to-br from-emerald-50 to-teal-50",
     iconColor: "text-emerald-600",
   },
   default: {
     border: "from-blue-200 via-purple-200 to-pink-200",
+    borderColor: "border-gray-200/50",
     iconBg: "bg-gradient-to-br from-blue-50 to-purple-50",
     iconColor: "text-blue-600",
   },
@@ -69,7 +76,8 @@ export function ThemedMetricCard({
   return (
     <Card className={cn(
       "relative overflow-hidden transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1",
-      "border-2 bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50/50",
+      "border-2 bg-white hover:bg-gradient-to-br hover:from-gray-50/30 hover:to-gray-100/30",
+      styles.borderColor,
       "before:absolute before:inset-0 before:rounded-lg before:p-[2px] before:-z-10",
       "before:bg-gradient-to-br",
       `before:${styles.border}`,

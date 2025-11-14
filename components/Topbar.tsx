@@ -32,7 +32,7 @@ export function Topbar({ onMenuClick }: TopbarProps) {
           </div>
           <div className="flex flex-col">
             <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-orange-500 bg-clip-text text-transparent">
-              Samvit Constructions
+              Sri Sumeru Reality
             </h1>
             <p className="text-xs text-muted-foreground hidden sm:block">Construction Management System</p>
           </div>

@@ -27,7 +27,7 @@ export function MetricCard({
   return (
     <Card className={cn(
       "relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1",
-      "border-2 bg-gradient-to-br from-white to-gray-50/50",
+      "border-2 border-blue-200/50 bg-gradient-to-br from-white to-gray-50/50",
       "before:absolute before:inset-0 before:rounded-lg before:p-[2px] before:-z-10",
       "before:bg-gradient-to-br before:from-blue-200 before:via-purple-200 before:to-pink-200",
       "before:opacity-50 hover:before:opacity-100 before:transition-opacity",
